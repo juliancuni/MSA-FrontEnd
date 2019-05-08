@@ -1,0 +1,167 @@
+<!-- <div class="content-heading p-2">
+    <div class="col-xl-2 col-md-6">
+        MAIN
+        <small>[NDERMARRJA_DATA]</small>
+    </div>
+
+    <div class="col-xl-2 col-md-2">
+        <div class="card flex-row align-items-center align-items-stretch border-0 m-2">
+            <div class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
+                <em class="icon-cloud-upload"></em>
+            </div>
+            <div class="col-8 bg-primary rounded-right">
+                <div class="h5 mt-2">1700</div>
+                <div class="h5">Uploads</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-2">
+        <div class="card flex-row align-items-center align-items-stretch border-0  m-2">
+            <div class="col-4 d-flex align-items-center bg-green-dark justify-content-center rounded-left">
+                <em class="icon-bubbles"></em>
+            </div>
+            <div class="col-8 bg-green rounded-right">
+                <div class="h5 mt-2">500</div>
+                <div class="h5">Mthtthsh</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-2">
+        <div class="card flex-row align-items-center align-items-stretch border-0  m-2">
+            <div class="col-4 d-flex align-items-center bg-purple-dark justify-content-center rounded-left">
+                <em class="icon-globe"></em>
+            </div>
+            <div class="col-8 bg-purple rounded-right">
+                <div class="h5 mt-2">500</div>
+                <div class="h5">Mthtthsh</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-2">
+        <div class="card flex-row align-items-center align-items-stretch border-0  m-2">
+            <div class="col-4 d-flex align-items-center bg-purple-dark justify-content-center rounded-left">
+                <em class="icon-globe"></em>
+            </div>
+            <div class="col-8 bg-purple rounded-right">
+                <div class="h5 mt-2">500</div>
+                <div class="h5">Mthtthsh</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-2 ">
+        <div class="card flex-row align-items-center align-items-stretch border-0 m-2">
+            <div class="col-4 d-flex align-items-center bg-purple-dark justify-content-center rounded-left">
+                <em class="icon-globe"></em>
+            </div>
+            <div class="col-8 bg-purple rounded-right">
+                <div class="h5 mt-2">500</div>
+                <div class="h5">Mthtthsh</div>
+            </div>
+        </div>
+    </div> 
+</div> -->
+<div class="row m-0 p-0 ">
+    <div class="col-xl-9 col-md-8 m-0 p-0">
+        <div class="row">
+            <!-- <button (click)="testToast()">Test</button> -->
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
+        </div>
+    </div>
+    <!-- END dashboard main content-->
+    <!-- START dashboard sidebar-->
+    <div class="col-xl-3 col-md-4 m-0 p-0">
+        <!-- START LISTA E PUNONJESVE-->
+        <div class="card card-default m-0 p-0">
+                <div class="card-header">
+                    <div class="px-2 float-right badge badge-success">{{prezent}} / {{punonjesit?.length}}</div>
+                    <div class="px-2 mr-2 float-right badge badge-light">Prezent</div>
+                    <div class="card-title">Listë prezenca</div>
+                </div>
+                <scrollable class="list-group" height="58.5vh">
+                    <div class="list-group-item list-group-item-action" *ngFor="let punonjes of punonjesit; index as i;"
+                        title="{{punonjes?.emer}} {{punonjes?.mbiemer}} {{ punonjes?.checkedIn ? 'Prezent' : 'Jo Prezent'  }}"  (click)="setPunonjes(punonjes)">
+                        <div class="media">
+                            <!-- <img class="align-self-start mx-2 circle thumb32" [src]="punonjes?.foto || ''" alt="Foto" alt="Image"> -->
+                            <div class="media-body text-truncate">
+                                <p class="mb-1">
+                                    <strong class="text-primary">
+                                        <span class="circle bg-success circle-lg text-left"
+                                            *ngIf="punonjes?.checkedIn"></span>
+                                        <span class="circle bg-gray circle-lg text-left"
+                                            *ngIf="!punonjes?.checkedIn"></span>
+                                        <span [ngClass]="{'text-muted': !punonjes?.checkedIn}"
+                                            [ngStyle]="{'font-style' : !punonjes?.checkedIn ? 'italic' : 'normal'}">{{punonjes?.emer}}
+                                            {{punonjes?.mbiemer}}</span>
+                                    </strong>
+                                </p>
+                                <!-- <p class="mb-1 text-sm">Cras sit amet nibh libero, in gravida nulla. Nulla...</p> -->
+                            </div>
+                            <div class="ml-auto">
+                                <small class="text-muted ml-2" *ngIf="punonjes?.check_in"><i
+                                        class="icon-clock"></i></small>
+                                <span [ngClass]="{'text-muted': !punonjes?.checkedIn}"
+                                    [ngStyle]="{'font-style' : !punonjes?.checkedIn ? 'italic' : 'normal'}"
+                                    *ngIf="punonjes?.check_out < punonjes?.check_in || !punonjes?.check_out">{{punonjes?.check_in | date:'dd MMMM HH:mm'}}</span>
+                                <span [ngClass]="{'text-muted': !punonjes?.checkedIn}"
+                                    [ngStyle]="{'font-style' : !punonjes?.checkedIn ? 'italic' : 'normal'}"
+                                    *ngIf="punonjes?.check_out > punonjes?.check_in">{{punonjes?.check_out | date:'dd MMMM HH:mm'}}</span>
+
+                                <small class="text-success ml-2" *ngIf="punonjes?.checkedIn"><i
+                                        class="icon-login"></i></small>
+                                <small class="text-muted ml-2" *ngIf="!punonjes?.checkedIn"><i
+                                        class="icon-logout"></i></small>
+                            </div>
+                        </div>
+                    </div>
+                </scrollable>
+            <div class="card-footer p-1 m-0 p-0">
+                <button class="btn-xs btn btn-labeled btn-outline-primary">
+                        <i class="fa fa-user"></i>
+                        Punonjës i ri
+                </button>
+                <!-- <p class="text-muted">
+                    <em class="fa fa-user-check fa-fw"></em>
+                    <span> Prezent: </span>
+                    <span class="text-success"> {{ prezent }}</span>
+                </p> -->
+            </div>
+        </div>
+        <!-- END LISTA E PUNONJESVE-->
+        <!-- START messages and activity-->
+        <div class="card card-default  m-0 p-0">
+            <div class="card-header">
+                <div class="card-title">Aktiviteti</div>
+            </div>
+            <!-- START Aktiviteti group-->
+            <scrollable class="list-group" height="15vh">
+                <!-- START Aktiviteti item-->
+                <div class="list-group-item p-0" >
+                    asdasd
+                </div>
+                <div class="list-group-item p-0" >
+                        asdasd
+                    </div>
+                    <div class="list-group-item p-0" >
+                            asdasd
+                        </div>
+                        <div class="list-group-item p-0" >
+                                asdasd
+                            </div>
+                            <div class="list-group-item p-0" >
+                                    asdasd
+                                </div>
+                <!-- END Aktiviteti item-->
+            </scrollable>
+            <!-- END Aktiviteti group-->
+            <!-- START Aktiviteti footer-->
+            <div class="card-footer"><a class="text-sm" href="#">Më shumë ...</a></div>
+            <!-- END Aktiviteti-footer-->
+        </div>
+        <!-- END messages and activity-->
+    </div>
+    <!-- END dashboard sidebar-->
+</div>
+<app-dialog></app-dialog>

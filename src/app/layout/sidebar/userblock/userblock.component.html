@@ -1,0 +1,14 @@
+<div class="item user-block" *ngIf="userBlockIsVisible()">
+    <!-- User picture-->
+    <div class="user-block-picture">
+        <div class="user-block-status">
+            <img class="img-thumbnail rounded-circle" [src]="perdorues?.foto || 'assets/img/user/nopic.png'" alt="foto" />
+            <div class="circle bg-success circle-lg"></div>
+        </div>
+    </div>
+    <!-- Name and Job-->
+    <div class="user-block-info">
+        <span class="user-block-name">{{perdorues?.emer}} {{perdorues?.mbiemer}}</span>
+        <span class="user-block-role">{{perdorues?.email}}</span>
+    </div>
+</div>

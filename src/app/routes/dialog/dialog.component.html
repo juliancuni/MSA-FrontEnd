@@ -1,0 +1,72 @@
+<!-- Punonjes Show Modal -->
+<ng-template #showPunonjesModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Kartela e punonjësit</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6 text-center">
+            <img class="circle thumb96" [src]="punonjes?.foto" alt="Image">
+          </div>
+          <div class="col-6">
+            <h3 class="mt-0">{{punonjes?.emer}} {{punonjes?.mbiemer}}</h3>
+            <ul class="list-unstyled mb-0" *ngIf="punonjes?.matOret">
+              <li class="mb-1">
+                <em class="fa fa-building fa-fw"></em>Departamenti</li>
+              <li class="mb-1" *ngIf="punonjes?.check_in">
+                <em
+                  class="fas fa-map-marker-alt fa-fw"></em>{{(punonjes?.checkedIn) ? 'Prezent prej ' : 'Jo prezent prej '}}
+                {{ punonjes?.checkedIn ? punonjes?.check_in : punonjes?.check_out | date:'dd MMMM HH:mm' }}</li>
+              <li class="mb-1">
+                <em class="fa fa-envelope fa-fw"></em>{{punonjes?.email}}</li>
+              <li class="mb-1">
+                <em class="fa fa-phone-volume fa-fw"></em>{{punonjes?.tel}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card-body bg-inverse">
+        <div class="row text-center">
+          <div class="col-4">
+            <p class="m-0 h3">700</p>
+            <p class="m-0 text-muted">Orë pune Muaji</p>
+          </div>
+          <div class="col-4">
+            <p class="m-0 h3">50</p>
+            <p class="m-0 text-muted">Punë të kryera</p>
+          </div>
+          <div class="col-4">
+            <p class="m-0 h3">55</p>
+            <p class="m-0 text-muted">Punë total</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-labeled btn-secondary" (click)="modalRef.hide()">
+      <span class="btn-label">
+        <i class="fas fa-window-close"></i>
+      </span>
+      Mbyll
+    </button>
+    <button type="button" class="btn btn-labeled btn-secondary" (click)="modalRef.hide()">
+      <span class="btn-label">
+        <i class="fas fa-window-close"></i>
+      </span>
+      Mbyll
+    </button>
+    <button type="button" class="btn btn-labeled btn-secondary" (click)="modalRef.hide()">
+      <span class="btn-label">
+        <i class="fas fa-window-close"></i>
+      </span>
+      Mbyll
+    </button>
+  </div>
+</ng-template>
+<!-- End Punonjes Show Modal -->
